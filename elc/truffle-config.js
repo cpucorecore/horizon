@@ -90,14 +90,18 @@ module.exports = {
     },
     // for truffle develop
     develop: {
-      host:"127.0.0.1",
+      host: "127.0.0.1",
       port: 8545,
       network_id: '*',
       accounts: 5,
       defaultEtherBalance: 500,
       blockTime: 0
+    },
+    ganache: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: '*'
     }
-
   },
 
   // Set default mocha options here, use special reporters etc.
