@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@ethereumjs/block": "^3.1.0",
+    "@ethereumjs/ethash": "1.0.0",
     "@harmony-js/core": "^0.1.53",
     "@truffle/hdwallet-provider": "^1.0.43",
     "mmap-io": "^1.1.7",
