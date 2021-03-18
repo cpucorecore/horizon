@@ -38,7 +38,8 @@ const argv = yargs
 async function main(){
     if(argv.dag) {
         const epoch = argv.epoch;
-        if(!epoch) { 
+        console.log(epoch);
+        if(epoch == undefined) {
             console.log("please provide epoch");
             return;
         }
