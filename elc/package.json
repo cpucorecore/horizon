@@ -7,6 +7,7 @@
     "@ethereumjs/ethash": "1.0.0",
     "@harmony-js/core": "^0.1.53",
     "@truffle/hdwallet-provider": "^1.0.43",
+    "mmap-io": "^1.1.7",
     "openzeppelin-solidity": "^3.3.0",
     "randombytes": "^2.1.0",
     "sha3": "^2.1.3",
