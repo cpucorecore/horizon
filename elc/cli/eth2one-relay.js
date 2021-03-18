@@ -27,6 +27,27 @@ const EthUrl = argv.ethurl;
 const ElcAddress = argv.elc;
 const BlockX = argv.block;
 
+function extractProofs(proofElements, proofIndexes) {
+    const proofsIndexes = [];
+    const proofses = [];
+
+    proofIndexes.forEach((indexes) => {
+        const idxes = [];
+        const proofs = [];
+        const buf = Buffer.from(indexes);
+        for(let i=0;i<buf.length/2;i++) {
+            const idx = buf.readUInt16BE(i*2, 2) - 1;
+            idxes.push(idx);
+            proofs.push(proofElements[idx]);
+        }
+        proofsIndexes.push(idxes);
+        proofses.push(proofs);
+    })
+
+    console.log(proofsIndexes);
+    console.log(proofses);
+}
+
 async function main() {
     const clientSol = ElcAddress ? await ClientSol.at(ElcAddress) : await ClientSol.deployed();
     const lastBlockNo = await clientSol.getBlockHeightMax();
@@ -38,7 +59,8 @@ async function main() {
     const dagProof = new DagProof(epoch);
     const proofs = dagProof.getProof(header);
     const rlpHeader = header.serialize();
-    a = await clientSol.addBlockHeader(rlpHeader, proofs.dagData, proofs.proofs, {gas:5000000});
+    const ppp = extractProofs(proofs.proofs, proofs.proofIndexes);
+    a = await clientSol.addBlockHeader(rlpHeader, proofs.dagData, ppp, {gas:5000000});
     const blockNo = await clientSol.getBlockHeightMax();
     console.log("new block number:", blockNo.toString(), a);
 }
