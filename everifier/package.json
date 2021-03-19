@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "eth-object": "^1.0.3"
+    "@harmony-js/core": "^0.1.57",
+    "@truffle/hdwallet-provider": "^1.2.3",
+    "eth-object": "^1.0.3",
+    "tslib": "^2.1.0"
   }
 }
