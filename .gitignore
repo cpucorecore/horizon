@@ -1,5 +1,6 @@
 build
 node_modules
 dag
+.dag
 block_*.json
 package-lock.json
