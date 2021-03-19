@@ -1,1 +1,2 @@
-truffle migrate --reset --network ganache --block=65000 --ethurl=http://localhost:8545
+block=$1
+truffle migrate --reset --network ganache --block=${block} --ethurl=http://localhost:8545
