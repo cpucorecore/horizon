@@ -61,10 +61,10 @@ Dag_CMD
     const _toHex = e=>`0x${e.toString('hex')}`;
     const proofJson = {
         header_rlp: _toHex(header.serialize()),
-        merkle_root: _toHex(proofs.root),
+        merkle_root: proofs.root.toString('hex'),
         elements: proofs.dagData.map(elems=>elems.map(_toHex)),
-        merkle_proofs: proofs.proofs.map(_toHex),
-        proofIndexes: proofs.proofIndexes.map(_toHex),
+        merkle_proofs: proofs.proofs.map(elems=>elems.map(_toHex)),
+        // proofIndexes: proofs.proofIndexes.map(_toHex),
     }
     if(!options.output){
       console.log(proofJson);
