@@ -6,8 +6,10 @@ const { EthWeb3 } = require('../lib/ethWeb3');
 const FakeClient = require("../../bridge/build/contracts/LightClientFake.json");
 
 async function deployBridges(ethUrl, hmyUrl) {
-    const ethBridge = await EthBridge.deploy(ethUrl);
-    const hmyBridge = await HmyBridge.deploy(hmyUrl);
+    const ethBridge = await EthBridge.deploy(ethUrl, process.env.PRIKEY_ETH);
+    console.log(ethBridge.contract._address);
+    const hmyBridge = await HmyBridge.deploy(hmyUrl, process.env.PRIKEY_GANACHE);
+    console.log(hmyBridge.contract._address);
     await ethBridge.Bind(hmyBridge.contract._address);
     await hmyBridge.Bind(ethBridge.contract._address);
     return { ethBridge, hmyBridge };

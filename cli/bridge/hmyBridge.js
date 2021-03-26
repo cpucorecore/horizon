@@ -5,7 +5,7 @@ const BridgeSol = require("../../bridge/build/contracts/RainbowOnes.json");
 
 class HmyBridge extends Bridge {
     constructor(rpcUrl, bridgeAddress) {
-        const web3 = new HmyWeb3(rpcUrl);
+        const web3 = new HmyWeb3(rpcUrl, process.env.PRIKEY_GANACHE);
         const contract = web3.ContractAt(BridgeSol.abi, bridgeAddress);
         // const hprove = null; // TODO
         const { EProve } = require('../../eprover');
@@ -15,7 +15,7 @@ class HmyBridge extends Bridge {
     }
 
     static async deploy(rpcUrl) {
-        let web3 = new HmyWeb3(rpcUrl);
+        let web3 = new HmyWeb3(rpcUrl, process.env.PRIKEY_GANACHE);
         const tx = web3.ContractDeploy(BridgeSol.abi, BridgeSol.bytecode);
         const contract = await web3.sendTx(tx); //options.address
         return new HmyBridge(rpcUrl, contract._address);

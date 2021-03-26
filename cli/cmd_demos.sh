@@ -35,3 +35,6 @@ node index.js EVerifier verify http://localhost:8545 0xc008be9258da8b4c1da836caa
 
 ############ Bridge cmds ############
 
+# deploy
+# must source .env.bridge first
+node index.js Bridge deploy http://localhost:8545 http://localhost:7545
