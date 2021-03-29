@@ -7,9 +7,7 @@ const FakeClient = require("../../bridge/build/contracts/LightClientFake.json");
 
 async function deployBridges(ethUrl, hmyUrl) {
     const ethBridge = await EthBridge.deploy(ethUrl, process.env.PRIKEY_ETH);
-    console.log(ethBridge.contract._address);
     const hmyBridge = await HmyBridge.deploy(hmyUrl, process.env.PRIKEY_GANACHE);
-    console.log(hmyBridge.contract._address);
     await ethBridge.Bind(hmyBridge.contract._address);
     await hmyBridge.Bind(ethBridge.contract._address);
     return { ethBridge, hmyBridge };
@@ -58,7 +56,7 @@ async function deployFakeLightClient(rpcUrl) {
 }
 
 async function deployFaucet(ethUrl) {
-    const web3 = new EthWeb3(ethUrl);
+    const web3 = new EthWeb3(ethUrl, process.env.PRIKEY_ETH);
     return FaucetERC20.deploy(web3);
 }
 
