@@ -88,6 +88,12 @@ module.exports = {
        host: "127.0.0.1",
        network_id: "*"
     },
+    local9545: {
+      //provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
+      port: 9545,
+      host: "127.0.0.1",
+      network_id: "*"
+   },
     // for truffle develop
     develop: {
       host: "127.0.0.1",

@@ -16,6 +16,7 @@ class EProve {
     async receiptProof(txHash) {
         const resp = await this.gp.receiptProof(txHash);
         return {
+            number: resp.header.number,
             hash: sha3(resp.header.serialize()),
             root: resp.header.receiptRoot,
             proof: encode(resp.receiptProof),

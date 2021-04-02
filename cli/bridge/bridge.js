@@ -12,8 +12,8 @@ class Bridge {
     }
 
     execProof(proofData) {
-        const {hash, root, key, proof} = proofData;
-        const tx = this.contract.methods.ExecProof(hash, root, key, proof);
+        const {number, hash, root, key, proof} = proofData;
+        const tx = this.contract.methods.ExecProof(number, root, key, proof);
         return this.web3.sendTx(tx);
     }
 
